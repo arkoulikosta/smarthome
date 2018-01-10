@@ -1,0 +1,93 @@
+  <!DOCTYPE html>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/jquery-3.2.1.min.js"></script>
+
+<script>
+	
+	$(function() {
+		var socket = io();
+		socket.on('pin_status', function(data) {	
+			$.each( data, function( i, l ){
+				i=i+1;
+				if (i<=20){
+					if(l === true){
+						$('#s'+i).html("ON");
+						$('#s'+i).css("color", "green");
+						$('#b'+i).html("OFF");
+					}
+					else if (l === false){
+						$('#s'+i).html("OFF");
+						$('#s'+i).css("color", "red");
+						$('#b'+i).html("ON");
+					}	
+				}
+				else if (i>20){
+					if(l === "up"){
+						$('#s'+i).html("Ανεβαίνει");
+						$('#s'+i).css("color", "green");
+					}
+					else if (l === "down"){
+						$('#s'+i).html("Κατεβαίνει");
+						$('#s'+i).css("color", "red");
+					}
+					else{
+						$('#s'+i).html("Σταματημένο");
+						$('#s'+i).css("color", "black");
+					}
+				}						
+			});		
+		});
+	});
+	
+function set_pin(pin) {
+	var socket = io();
+	socket.emit('set_pin', pin);
+}
+	
+</script>
+<html>
+
+<head>
+<link rel="stylesheet" type="text/css" href="css.css">
+<meta charset="utf-8" />
+<title>Έλεγχος Σπιτιού</title>
+</head>
+<body>
+
+<div>
+
+<h4>Έλεγχος Σπιτιού</h4>
+
+Δωμάτιο 01:  <g id="s1">0</g>  <button class="button" id="b1" onclick="set_pin(1)">ON/OFF</button></br>
+Δωμάτιο 02:  <g id="s2">0</g>  <button class="button" id="b2" onclick="set_pin(2)">ON/OFF</button></br>
+Δωμάτιο 03:  <g id="s3">0</g>  <button class="button" id="b3" onclick="set_pin(3)">ON/OFF</button></br>
+Δωμάτιο 04:  <g id="s4">0</g>  <button class="button" id="b4" onclick="set_pin(4)">ON/OFF</button></br>
+Δωμάτιο 05:  <g id="s5">0</g>  <button class="button" id="b5" onclick="set_pin(5)">ON/OFF</button></br>
+Δωμάτιο 06:  <g id="s6">0</g>  <button class="button" id="b6" onclick="set_pin(6)">ON/OFF</button></br>
+Δωμάτιο 07:  <g id="s7">0</g>  <button class="button" id="b7" onclick="set_pin(7)">ON/OFF</button></br>
+Δωμάτιο 08:  <g id="s8">0</g>  <button class="button" id="b8" onclick="set_pin(8)">ON/OFF</button></br>
+Δωμάτιο 09:  <g id="s9">0</g>  <button class="button" id="b9" onclick="set_pin(9)">ON/OFF</button></br>
+Δωμάτιο 10:  <g id="s10">0</g>  <button class="button" id="b10" onclick="set_pin(10)">ON/OFF</button></br>
+Δωμάτιο 11:  <g id="s11">0</g>  <button class="button" id="b11" onclick="set_pin(11)">ON/OFF</button></br>
+Δωμάτιο 12:  <g id="s12">0</g>  <button class="button" id="b12" onclick="set_pin(12)">ON/OFF</button></br>
+Δωμάτιο 13:  <g id="s13">0</g>  <button class="button" id="b13" onclick="set_pin(13)">ON/OFF</button></br>
+Δωμάτιο 14:  <g id="s14">0</g>  <button class="button" id="b14" onclick="set_pin(14)">ON/OFF</button></br>
+Δωμάτιο 15:  <g id="s15">0</g>  <button class="button" id="b15" onclick="set_pin(15)">ON/OFF</button></br>
+Δωμάτιο 16:  <g id="s16">0</g>  <button class="button" id="b16" onclick="set_pin(16)">ON/OFF</button></br>
+Δωμάτιο 17:  <g id="s17">0</g>  <button class="button" id="b17" onclick="set_pin(17)">ON/OFF</button></br>
+Δωμάτιο 18:  <g id="s18">0</g>  <button class="button" id="b18" onclick="set_pin(18)">ON/OFF</button></br>
+Δωμάτιο 19:  <g id="s19">0</g>  <button class="button" id="b19" onclick="set_pin(19)">ON/OFF</button></br>
+Δωμάτιο 20:  <g id="s20">0</g>  <button class="button" id="b20" onclick="set_pin(20)">ON/OFF</button></br>
+Ρολό 1:	<g id="s21">0</g> <button class="button2" id="b21" onclick="set_pin(21)">Ανέβασε</button> <button class="button2" id="b22" onclick="set_pin(22)">Κατέβασε</button></br>
+Ρολό 2:	<g id="s22">0</g> <button class="button2" id="b23" onclick="set_pin(23)">Ανέβασε</button> <button class="button2" id="b24" onclick="set_pin(24)">Κατέβασε</button></br>
+Ρολό 3:	<g id="s23">0</g> <button class="button2" id="b25" onclick="set_pin(25)">Ανέβασε</button> <button class="button2" id="b26" onclick="set_pin(26)">Κατέβασε</button></br>
+Ρολό 4:	<g id="s24">0</g> <button class="button2" id="b27" onclick="set_pin(27)">Ανέβασε</button> <button class="button2" id="b28" onclick="set_pin(28)">Κατέβασε</button></br>
+Ρολό 5: <g id="s25">0</g> <button class="button2" id="b29" onclick="set_pin(29)">Ανέβασε</button> <button class="button2" id="b30" onclick="set_pin(30)">Κατέβασε</button></br>
+ 
+<button class="button2" id="b31" onclick="set_pin(31)">Ανέβασε Ρολά</button> <button class="button2" id="b32" onclick="set_pin(32)">Κατέβασε Ρολά</button></br>
+ </br>
+<a href="/logout">Log out</a>
+ 
+</div> 
+</body>
+</html>
