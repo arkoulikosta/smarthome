@@ -5,7 +5,7 @@ sudo reboot
 =----------------------------UPDATE--------------------------------------= 
 =----------------------------NPM--------------------------------------= 
 sudo apt-get install npm -y
-npm install onoff express sleep socket.io rpio
+npm install onoff express sleep socket.io rpio passport serialport passport-local cookie-parser body-parser express-session connect-ensure-login ejs
 
 sudo git clone https://github.com/abelectronicsuk/ABElectronics_NodeJS_Libraries.git
 sudo cp -avr ABElectronics_NodeJS_Libraries/lib/iopi/ /home/pi/node_modules/
